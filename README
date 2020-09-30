@@ -1,0 +1,17 @@
+#Code for calculating gg to ag mutations between patient PBMCs containing VIF or deltaVIF (VIF mutant) HIV strains
+#gg to ag are indicative of APOBEC3G mediated mutations, known to be much more pronounced in deltaVIF strains of HIV
+
+#in this code, already aligned files (aligned using benchling) are read and the location of 'gg' is found using the location of the first g in the reference sequence 
+#(the first file in the alignment)
+#this is then used to find whether this same location in all the aligned sequences is changed to 'a' (since the first location is from the first g in "gg" this will correspond 
+#to a gg->ag mutation
+
+#it is important to count only gg to ag as for example, a sequence that has "gggatc" -> "ggaatc" does not correspond to a an apobec3g profile. the conformation of apobec3g 
+#prefers a g to the side, but you should aso count a sequence of "gggatc" -> "aagatc" as having been mediated by apobec3g twice, once as "aggatc' and again working back as
+#"aagatc"
+
+#any sequence that shows an 'a' mutation at the locations corresponding to the aligned reference will be changed to TRUE and those not having an 'a' to FALSE. These values are 
+#counted for the whole sequence. 
+
+#finding a pattern between APOBEC3G and H mutations, which both show different profiles in polymorphisms, can provide insight into HIV drug resistance as APOBEC's have been shown
+#to influence drug resistance in HIV. 
